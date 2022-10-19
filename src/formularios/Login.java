@@ -148,7 +148,7 @@ public class Login extends javax.swing.JFrame {
     private void jBtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOkActionPerformed
         // TODO add your handling code here:
         String user = this.jTfUsuario.getText();
-        String pw = this.jPfContra.getPassword().toString();
+        String pw = String.valueOf(this.jPfContra.getPassword());   //CORREGIDO; .getPassword().toString() no funcionaba
         
         if(usuarios.autentcarUsuario(user, pw)) {
             JOptionPane.showMessageDialog(this, "OK");

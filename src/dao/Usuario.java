@@ -30,13 +30,9 @@ public class Usuario {
         this.lista.add(new MUsuario(user, pw, nombres, apellidos, email));
     }
     
-    public boolean verificarUser(String user, String pw) {
-        return this.username.equals(user) && this.pw.equals(pw);
-    }
-    
     public boolean autentcarUsuario(String user, String pw) {
         for(MUsuario us: this.lista) {
-            if(us.verificarUser(user,  pw))
+            if(us.verificarUsuario(user, pw))
                 return true;
         }
         

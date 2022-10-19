@@ -67,5 +67,14 @@ public class MUsuario {
         this.email = email;
     }
 
-    
+    public boolean verificarUsuario(String user, String pass){
+        /*
+        System.out.println(user);
+        System.out.println(this.userName);
+        System.out.println(this.pw);
+        System.out.println(pass);
+        */
+        
+        return this.userName.equals(user) && this.pw.equals(pass);
+    }
 }
