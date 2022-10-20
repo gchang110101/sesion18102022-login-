@@ -34,4 +34,18 @@ public class MiUAMGDCP {
        login.setVisible(true);
     }
     
+    
+    public void llenarUsuarios() {
+        Usuario usuarios = new Usuario();
+       
+       usuarios.agregar("19014795", "123", "Gabriel David", "Chang Perez", 
+               "gdchang@uamv.edu.ni");
+       
+       usuarios.agregar("66666666", "testingXD", "empty empty", "empty empty", 
+               "emptyempty@uamv.edu.ni");
+       
+       Login login = new Login();
+       login.usuarios = usuarios;
+       login.setVisible(true);
+    }
 }

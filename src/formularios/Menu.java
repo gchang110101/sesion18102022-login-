@@ -4,6 +4,8 @@
  */
 package formularios;
 
+import miuamgdcp.MiUAMGDCP;
+
 /**
  *
  * @author labc205
@@ -28,10 +30,11 @@ public class Menu extends javax.swing.JFrame {
 
         MiEscritorio = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        mnuCerrar = new javax.swing.JMenu();
+        mnuCerrarS = new javax.swing.JMenuItem();
+        mnuSalir = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
+        mnuUsuarios = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Mi UAM");
@@ -40,24 +43,55 @@ public class Menu extends javax.swing.JFrame {
         MiEscritorio.setLayout(MiEscritorioLayout);
         MiEscritorioLayout.setHorizontalGroup(
             MiEscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 621, Short.MAX_VALUE)
+            .addGap(0, 700, Short.MAX_VALUE)
         );
         MiEscritorioLayout.setVerticalGroup(
             MiEscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 277, Short.MAX_VALUE)
+            .addGap(0, 375, Short.MAX_VALUE)
         );
 
-        jMenu1.setText("Archivo");
+        mnuCerrar.setText("Archivo");
+        mnuCerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuCerrarActionPerformed(evt);
+            }
+        });
 
-        jMenuItem1.setText("jMenuItem1");
-        jMenu1.add(jMenuItem1);
+        mnuCerrarS.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_1, java.awt.event.InputEvent.ALT_DOWN_MASK | java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        mnuCerrarS.setText("Cerrar Sesión");
+        mnuCerrarS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuCerrarSActionPerformed(evt);
+            }
+        });
+        mnuCerrar.add(mnuCerrarS);
 
-        jMenuItem2.setText("jMenuItem2");
-        jMenu1.add(jMenuItem2);
+        mnuSalir.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_4, java.awt.event.InputEvent.ALT_DOWN_MASK));
+        mnuSalir.setText("Salir");
+        mnuSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuSalirActionPerformed(evt);
+            }
+        });
+        mnuCerrar.add(mnuSalir);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(mnuCerrar);
 
         jMenu2.setText("Formulario");
+        jMenu2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu2ActionPerformed(evt);
+            }
+        });
+
+        mnuUsuarios.setText("Usuarios");
+        mnuUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuUsuariosActionPerformed(evt);
+            }
+        });
+        jMenu2.add(mnuUsuarios);
+
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
@@ -66,15 +100,47 @@ public class Menu extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(MiEscritorio)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(MiEscritorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(MiEscritorio, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(MiEscritorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void mnuCerrarSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuCerrarSActionPerformed
+        // TODO add your handling code here:
+        
+        MiUAMGDCP uam = new MiUAMGDCP();
+        uam.llenarUsuarios();
+        dispose();
+    }//GEN-LAST:event_mnuCerrarSActionPerformed
+
+    private void mnuSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuSalirActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_mnuSalirActionPerformed
+
+    private void mnuCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuCerrarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mnuCerrarActionPerformed
+
+    private void mnuUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuUsuariosActionPerformed
+        // TODO add your handling code here:
+        Usuario user = new Usuario();
+        this.MiEscritorio.add(user);
+        user.setVisible(true);
+    }//GEN-LAST:event_mnuUsuariosActionPerformed
+
+    private void jMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenu2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -113,10 +179,11 @@ public class Menu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane MiEscritorio;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenu mnuCerrar;
+    private javax.swing.JMenuItem mnuCerrarS;
+    private javax.swing.JMenuItem mnuSalir;
+    private javax.swing.JMenuItem mnuUsuarios;
     // End of variables declaration//GEN-END:variables
 }

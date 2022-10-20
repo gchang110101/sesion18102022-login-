@@ -13,6 +13,7 @@ import javax.swing.JOptionPane;
  */
 public class Login extends javax.swing.JFrame {
     public Usuario usuarios = new Usuario();
+    private int intentos = 0;
     /**
      * Creates new form Login
      */
@@ -161,11 +162,22 @@ public class Login extends javax.swing.JFrame {
         //METODO 2 tambien funciona
         String pw = String.valueOf(this.jPfContra.getPassword());
         
+        if (intentos == 3) {
+            JOptionPane.showMessageDialog(this, "Muchos intentos. Adios");
+            System.exit(0);
+        }
+        
         if(usuarios.autentcarUsuario(user, pw)) {
-            JOptionPane.showMessageDialog(this, "OK");
+            
+            //JOptionPane.showMessageDialog(this, "OK");
+            Menu mnu = new Menu();
+            mnu.setVisible(true);
+            //this.setVisible(false);
+            dispose();
+            
         } else {
             JOptionPane.showMessageDialog(this, "Incorrecto");
-
+            intentos++;
         }
     }//GEN-LAST:event_jBtnOkActionPerformed
 
