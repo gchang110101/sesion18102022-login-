@@ -27,6 +27,7 @@ public class MiUAMGDCP {
        
        usuarios.agregar("66666666", "testingXD", "empty empty", "empty empty", 
                "emptyempty@uamv.edu.ni");
+    
        
        Login login = new Login();
        login.usuarios = usuarios;
