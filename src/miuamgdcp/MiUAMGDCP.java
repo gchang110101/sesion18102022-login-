@@ -6,6 +6,7 @@ package miuamgdcp;
 
 import dao.Usuario;
 import formularios.Login;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
 /**
@@ -19,21 +20,21 @@ public class MiUAMGDCP {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        
-       Usuario usuarios = new Usuario();
+        Usuario usuarios = new Usuario();
        
-       usuarios.agregar("19014795", "123", "Gabriel David", "Chang Perez", 
+        usuarios.agregar("19014795", "123", "Gabriel David", "Chang Perez", 
                "gdchang@uamv.edu.ni");
        
-       usuarios.agregar("66666666", "testingXD", "empty empty", "empty empty", 
+        usuarios.agregar("66666666", "testingXD", "empty empty", "empty empty", 
                "emptyempty@uamv.edu.ni");
+       
+        usuarios.agregar("1", "1", "testUser", "testLast", "testEmail");
     
        
-       Login login = new Login();
-       login.usuarios = usuarios;
-       login.setVisible(true);
+        Login login = new Login();
+        login.usuarios = usuarios;
+        login.setVisible(true);
     }
-    
     
     public void llenarUsuarios() {
         Usuario usuarios = new Usuario();

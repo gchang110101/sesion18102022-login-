@@ -24,13 +24,237 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="488" max="32767" attributes="0"/>
+          <Group type="102" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jToolBar1" max="32767" attributes="0"/>
+                  <Component id="jPanel1" alignment="0" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+              <Component id="jScrollPane1" min="-2" pref="427" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="330" max="32767" attributes="0"/>
+          <Group type="102" attributes="0">
+              <Component id="jToolBar1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="105" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="jScrollPane1" min="-2" pref="256" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+          </Group>
       </Group>
     </DimensionLayout>
   </Layout>
+  <SubComponents>
+    <Container class="javax.swing.JPanel" name="jPanel1">
+      <Properties>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+            <TitledBorder title="Datos Generales">
+              <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                <LineBorder>
+                  <Color PropertyName="color" blue="ff" green="33" red="33" type="rgb"/>
+                </LineBorder>
+              </Border>
+            </TitledBorder>
+          </Border>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="0" red="0" type="rgb"/>
+        </Property>
+      </Properties>
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jLblUser" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLblContra" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLblNombres" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLblApe" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLblEmail" alignment="1" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="jTfUser" max="32767" attributes="0"/>
+                      <Component id="jPfContra" pref="250" max="32767" attributes="0"/>
+                      <Component id="jTfNombres" max="32767" attributes="0"/>
+                      <Component id="jTfApe" max="32767" attributes="0"/>
+                      <Component id="jTfEmail" max="32767" attributes="0"/>
+                  </Group>
+                  <EmptySpace pref="39" max="32767" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLblUser" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTfUser" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLblContra" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jPfContra" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jLblNombres" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTfNombres" min="-2" pref="19" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jLblApe" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTfApe" min="-2" pref="19" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jLblEmail" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTfEmail" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace pref="86" max="32767" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JLabel" name="jLblUser">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Nombre de Usuario:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLblContra">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Contrase&#xf1;a:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLblNombres">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Nombres:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLblApe">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Apellidos:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLblEmail">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="E-mail:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTfUser">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTfUserActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JPasswordField" name="jPfContra">
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTfNombres">
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTfApe">
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTfEmail">
+        </Component>
+      </SubComponents>
+    </Container>
+    <Container class="javax.swing.JToolBar" name="jToolBar1">
+      <Properties>
+        <Property name="rollover" type="boolean" value="true"/>
+      </Properties>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBoxLayout"/>
+      <SubComponents>
+        <Component class="javax.swing.JButton" name="jBtnNuevo">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/complemento/img/nuevo-producto.png"/>
+            </Property>
+            <Property name="toolTipText" type="java.lang.String" value="Nuevo"/>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Hand Cursor"/>
+            </Property>
+            <Property name="focusable" type="boolean" value="false"/>
+            <Property name="horizontalTextPosition" type="int" value="0"/>
+            <Property name="verticalTextPosition" type="int" value="3"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBtnNuevoActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="jBtnGuardar">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/complemento/img/disquete.png"/>
+            </Property>
+            <Property name="toolTipText" type="java.lang.String" value="Guardar"/>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Hand Cursor"/>
+            </Property>
+            <Property name="focusable" type="boolean" value="false"/>
+            <Property name="horizontalTextPosition" type="int" value="0"/>
+            <Property name="verticalTextPosition" type="int" value="3"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="jBtnEditar">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/complemento/img/editar.png"/>
+            </Property>
+            <Property name="toolTipText" type="java.lang.String" value="Editar"/>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Hand Cursor"/>
+            </Property>
+            <Property name="focusable" type="boolean" value="false"/>
+            <Property name="horizontalTextPosition" type="int" value="0"/>
+            <Property name="verticalTextPosition" type="int" value="3"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="jBtnEliminar">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/complemento/img/boton-eliminar.png"/>
+            </Property>
+            <Property name="toolTipText" type="java.lang.String" value="Eliminar"/>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Hand Cursor"/>
+            </Property>
+            <Property name="focusable" type="boolean" value="false"/>
+            <Property name="horizontalTextPosition" type="int" value="0"/>
+            <Property name="verticalTextPosition" type="int" value="3"/>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+      <AuxValues>
+        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+      </AuxValues>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Component class="javax.swing.JTable" name="jTblRegistros">
+          <Properties>
+            <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+              <Table columnCount="0" rowCount="0"/>
+            </Property>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
+  </SubComponents>
 </Form>

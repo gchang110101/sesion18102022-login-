@@ -5,6 +5,7 @@
 package formularios;
 
 import dao.Usuario;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
 /**
@@ -42,12 +43,29 @@ public class Login extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Inicio de Sesión");
         setResizable(false);
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                formKeyPressed(evt);
+            }
+        });
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 255)), "Inicio de Sesión", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(51, 51, 255))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 255)), "Inicio de Sesión", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 11), new java.awt.Color(51, 51, 255))); // NOI18N
 
         jLabel1.setText("Usuario");
 
+        jTfUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTfUsuarioKeyPressed(evt);
+            }
+        });
+
         jLabel2.setText("Contraseña");
+
+        jPfContra.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jPfContraKeyPressed(evt);
+            }
+        });
 
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 255, 0)));
 
@@ -91,9 +109,6 @@ public class Login extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPfContra, javax.swing.GroupLayout.PREFERRED_SIZE, 404, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(195, 195, 195)
                         .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -104,12 +119,15 @@ public class Login extends javax.swing.JFrame {
                                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(24, 24, 24)
-                                .addComponent(jTfUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 404, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(191, 191, 191)
-                                .addComponent(jLabel2)))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jPfContra, javax.swing.GroupLayout.PREFERRED_SIZE, 404, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTfUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 404, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(0, 4, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(185, 185, 185)
+                .addComponent(jLabel2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -118,9 +136,9 @@ public class Login extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jTfUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38)
+                .addGap(44, 44, 44)
                 .addComponent(jLabel2)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPfContra, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(50, 50, 50)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -162,15 +180,21 @@ public class Login extends javax.swing.JFrame {
         //METODO 2 tambien funciona
         String pw = String.valueOf(this.jPfContra.getPassword());
         
+        /*
         if (intentos == 3) {
             JOptionPane.showMessageDialog(this, "Muchos intentos. Adios");
             System.exit(0);
         }
+        */
         
         if(usuarios.autentcarUsuario(user, pw)) {
             
-            //JOptionPane.showMessageDialog(this, "OK");
+            JOptionPane.showMessageDialog(this, "Usuario Correcto",
+                    "Entrando", JOptionPane.INFORMATION_MESSAGE);
+            
             Menu mnu = new Menu();
+            mnu.setLista(usuarios);
+            
             mnu.setVisible(true);
             //this.setVisible(false);
             dispose();
@@ -179,12 +203,116 @@ public class Login extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Incorrecto");
             intentos++;
         }
+        
+        if (intentos == 3) {
+            JOptionPane.showMessageDialog(this, "Muchos intentos. Adios");
+            System.exit(0);
+        }
     }//GEN-LAST:event_jBtnOkActionPerformed
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_jBtnCancelarActionPerformed
+
+    //para tratar de acceder apretando enter, 
+    private void jPfContraKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPfContraKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            String user = this.jTfUsuario.getText();
+        
+            /* METODO NO FUNCIONA
+            String pw = this.jPfContra.getPassword().toString(); 
+            */
+
+            /* METODO 1 SI SIRVE
+            String pw = new String(this.jPfContra.getPassword());  
+            */
+
+            //METODO 2 tambien funciona
+            String pw = String.valueOf(this.jPfContra.getPassword());
+
+            /*
+            if (intentos == 3) {
+                JOptionPane.showMessageDialog(this, "Muchos intentos. Adios");
+                System.exit(0);
+            }
+            */
+
+            if(usuarios.autentcarUsuario(user, pw)) {
+
+                JOptionPane.showMessageDialog(this, "Usuario Correcto",
+                        "Entrando", JOptionPane.INFORMATION_MESSAGE);
+
+                Menu mnu = new Menu();
+                mnu.setLista(usuarios);
+
+                mnu.setVisible(true);
+                //this.setVisible(false);
+                dispose();
+
+            } else {
+                JOptionPane.showMessageDialog(this, "Incorrecto");
+                intentos++;
+            }
+            
+            if (intentos == 3) {
+                JOptionPane.showMessageDialog(this, "Muchos intentos. Adios");
+                System.exit(0);
+            }
+        }
+    }//GEN-LAST:event_jPfContraKeyPressed
+
+    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formKeyPressed
+
+    private void jTfUsuarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTfUsuarioKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            String user = this.jTfUsuario.getText();
+        
+            /* METODO NO FUNCIONA
+            String pw = this.jPfContra.getPassword().toString(); 
+            */
+
+            /* METODO 1 SI SIRVE
+            String pw = new String(this.jPfContra.getPassword());  
+            */
+
+            //METODO 2 tambien funciona
+            String pw = String.valueOf(this.jPfContra.getPassword());
+
+            /*
+            if (intentos == 3) {
+                JOptionPane.showMessageDialog(this, "Muchos intentos. Adios");
+                System.exit(0);
+            }
+            */
+
+            if(usuarios.autentcarUsuario(user, pw)) {
+
+                JOptionPane.showMessageDialog(this, "Usuario Correcto",
+                        "Entrando", JOptionPane.INFORMATION_MESSAGE);
+
+                Menu mnu = new Menu();
+                mnu.setLista(usuarios);
+
+                mnu.setVisible(true);
+                //this.setVisible(false);
+                dispose();
+
+            } else {
+                JOptionPane.showMessageDialog(this, "Incorrecto");
+                intentos++;
+            }
+            
+            if (intentos == 3) {
+                JOptionPane.showMessageDialog(this, "Muchos intentos. Adios");
+                System.exit(0);
+            }
+        }
+    }//GEN-LAST:event_jTfUsuarioKeyPressed
 
     /**
      * @param args the command line arguments

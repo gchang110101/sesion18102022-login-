@@ -4,17 +4,21 @@
  */
 package formularios;
 
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author labc205
  */
 public class Usuario extends javax.swing.JInternalFrame {
-
+    private dao.Usuario lista = new dao.Usuario();
     /**
      * Creates new form Usuario
      */
     public Usuario() {
         initComponents();
+        //this.jTblRegistros.setModel(generarTabla());
     }
 
     /**
@@ -26,24 +30,192 @@ public class Usuario extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jLblUser = new javax.swing.JLabel();
+        jLblContra = new javax.swing.JLabel();
+        jLblNombres = new javax.swing.JLabel();
+        jLblApe = new javax.swing.JLabel();
+        jLblEmail = new javax.swing.JLabel();
+        jTfUser = new javax.swing.JTextField();
+        jPfContra = new javax.swing.JPasswordField();
+        jTfNombres = new javax.swing.JTextField();
+        jTfApe = new javax.swing.JTextField();
+        jTfEmail = new javax.swing.JTextField();
+        jToolBar1 = new javax.swing.JToolBar();
+        jBtnNuevo = new javax.swing.JButton();
+        jBtnGuardar = new javax.swing.JButton();
+        jBtnEditar = new javax.swing.JButton();
+        jBtnEliminar = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTblRegistros = new javax.swing.JTable();
+
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Usuarios");
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 255)), "Datos Generales"));
+        jPanel1.setForeground(new java.awt.Color(0, 0, 255));
+
+        jLblUser.setText("Nombre de Usuario:");
+
+        jLblContra.setText("Contraseña:");
+
+        jLblNombres.setText("Nombres:");
+
+        jLblApe.setText("Apellidos:");
+
+        jLblEmail.setText("E-mail:");
+
+        jTfUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTfUserActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(46, 46, 46)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLblUser)
+                    .addComponent(jLblContra, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLblNombres, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLblApe, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLblEmail, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jTfUser)
+                    .addComponent(jPfContra, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+                    .addComponent(jTfNombres)
+                    .addComponent(jTfApe)
+                    .addComponent(jTfEmail))
+                .addContainerGap(39, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLblUser)
+                    .addComponent(jTfUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLblContra)
+                    .addComponent(jPfContra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLblNombres)
+                    .addComponent(jTfNombres, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLblApe)
+                    .addComponent(jTfApe, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLblEmail)
+                    .addComponent(jTfEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(86, Short.MAX_VALUE))
+        );
+
+        jToolBar1.setRollover(true);
+
+        jBtnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/complemento/img/nuevo-producto.png"))); // NOI18N
+        jBtnNuevo.setToolTipText("Nuevo");
+        jBtnNuevo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jBtnNuevo.setFocusable(false);
+        jBtnNuevo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBtnNuevo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jBtnNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnNuevoActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(jBtnNuevo);
+
+        jBtnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/complemento/img/disquete.png"))); // NOI18N
+        jBtnGuardar.setToolTipText("Guardar");
+        jBtnGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jBtnGuardar.setFocusable(false);
+        jBtnGuardar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBtnGuardar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(jBtnGuardar);
+
+        jBtnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/complemento/img/editar.png"))); // NOI18N
+        jBtnEditar.setToolTipText("Editar");
+        jBtnEditar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jBtnEditar.setFocusable(false);
+        jBtnEditar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBtnEditar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(jBtnEditar);
+
+        jBtnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/complemento/img/boton-eliminar.png"))); // NOI18N
+        jBtnEliminar.setToolTipText("Eliminar");
+        jBtnEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jBtnEliminar.setFocusable(false);
+        jBtnEliminar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBtnEliminar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(jBtnEliminar);
+
+        jTblRegistros.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane1.setViewportView(jTblRegistros);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 488, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(39, 39, 39)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 330, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(105, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jTfUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTfUserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTfUserActionPerformed
+
+    private void jBtnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnNuevoActionPerformed
+        // TODO add your handling code here:
+        Limpiar();
+    }//GEN-LAST:event_jBtnNuevoActionPerformed
+
+    public void Limpiar() {
+        this.jTfUser.setText("");
+        this.jPfContra.setText("");
+        this.jTfApe.setText("");
+        this.jTfEmail.setText("");
+        this.jTfNombres.setText("");
+        this.jTfUser.requestFocus();
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -80,5 +252,62 @@ public class Usuario extends javax.swing.JInternalFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBtnEditar;
+    private javax.swing.JButton jBtnEliminar;
+    private javax.swing.JButton jBtnGuardar;
+    private javax.swing.JButton jBtnNuevo;
+    private javax.swing.JLabel jLblApe;
+    private javax.swing.JLabel jLblContra;
+    private javax.swing.JLabel jLblEmail;
+    private javax.swing.JLabel jLblNombres;
+    private javax.swing.JLabel jLblUser;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPasswordField jPfContra;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTblRegistros;
+    private javax.swing.JTextField jTfApe;
+    private javax.swing.JTextField jTfEmail;
+    private javax.swing.JTextField jTfNombres;
+    private javax.swing.JTextField jTfUser;
+    private javax.swing.JToolBar jToolBar1;
     // End of variables declaration//GEN-END:variables
+
+    public dao.Usuario getLista() {
+        return lista;
+    }
+
+    public void setLista(dao.Usuario lista) {
+        this.lista = lista;
+    }
+    
+    private DefaultTableModel generarTabla() {
+         DefaultTableModel dtm = new DefaultTableModel();
+         
+        try {
+            String titulos[] = {"ID", "NOMBRE COMPLETO", "EMAIL"};
+            dtm.setColumnIdentifiers(titulos);
+            
+            Object fila[] = new Object[3];
+            int i = 0;
+            
+            while(i < lista.getLista().size()) {
+                fila[0] = lista.getLista().get(i).getUserName();
+                
+                fila[1] = lista.getLista().get(i).getNombres() + 
+                        " " + lista.getLista().get(i).getApellidos();
+                
+                fila[2] = lista.getLista().get(i).getEmail();
+                
+                dtm.addRow(fila);
+                i++;
+            }
+            
+            
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Error: " + ex.getMessage(),
+                    "Error al generar la tabla",
+                    JOptionPane.WARNING_MESSAGE);
+        }
+        return dtm;
+    }
 }
