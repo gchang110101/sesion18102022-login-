@@ -20,6 +20,12 @@ public class Usuario extends javax.swing.JInternalFrame {
         initComponents();
         //this.jTblRegistros.setModel(generarTabla());
     }
+    
+    public Usuario(dao.Usuario user) {
+        initComponents();
+        this.lista = user;
+        this.jTblRegistros.setModel(generarTabla());
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -51,6 +57,7 @@ public class Usuario extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(true);
         setTitle("Usuarios");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 255)), "Datos Generales"));
@@ -140,11 +147,18 @@ public class Usuario extends javax.swing.JInternalFrame {
         jBtnGuardar.setFocusable(false);
         jBtnGuardar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jBtnGuardar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jBtnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnGuardarActionPerformed(evt);
+            }
+        });
         jToolBar1.add(jBtnGuardar);
 
         jBtnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/complemento/img/editar.png"))); // NOI18N
         jBtnEditar.setToolTipText("Editar");
         jBtnEditar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jBtnEditar.setDisabledIcon(null);
+        jBtnEditar.setEnabled(false);
         jBtnEditar.setFocusable(false);
         jBtnEditar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jBtnEditar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -153,6 +167,7 @@ public class Usuario extends javax.swing.JInternalFrame {
         jBtnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/complemento/img/boton-eliminar.png"))); // NOI18N
         jBtnEliminar.setToolTipText("Eliminar");
         jBtnEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jBtnEliminar.setEnabled(false);
         jBtnEliminar.setFocusable(false);
         jBtnEliminar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jBtnEliminar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -205,7 +220,24 @@ public class Usuario extends javax.swing.JInternalFrame {
     private void jBtnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnNuevoActionPerformed
         // TODO add your handling code here:
         Limpiar();
+        this.jBtnGuardar.setEnabled(true);
+        this.jBtnEliminar.setEnabled(false);
+        this.jBtnEditar.setEnabled(false);
+        //this.jTblRegistros.setModel(generarTabla());
     }//GEN-LAST:event_jBtnNuevoActionPerformed
+
+    private void jBtnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnGuardarActionPerformed
+        // TODO add your handling code here:
+        String id = this.jTfUser.getText();
+        String pw = String.valueOf(this.jPfContra.getPassword());
+        String nom = this.jTfNombres.getText(); 
+        String ape = this.jTfApe.getText();
+        String email = this.jTfEmail.getText();
+        
+        lista.agregar(id, pw, nom, ape, email);
+        //this.jTblRegistros.setModel(generarTabla());
+        Limpiar();
+    }//GEN-LAST:event_jBtnGuardarActionPerformed
 
     public void Limpiar() {
         this.jTfUser.setText("");
@@ -214,6 +246,8 @@ public class Usuario extends javax.swing.JInternalFrame {
         this.jTfEmail.setText("");
         this.jTfNombres.setText("");
         this.jTfUser.requestFocus();
+        this.jTblRegistros.setModel(generarTabla());
+
     }
     
     /**

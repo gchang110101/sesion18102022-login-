@@ -192,11 +192,13 @@ public class Login extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Usuario Correcto",
                     "Entrando", JOptionPane.INFORMATION_MESSAGE);
             
-            Menu mnu = new Menu();
-            mnu.setLista(usuarios);
+            Menu mnu = new Menu(usuarios);
+            
+            //mnu.setLista(usuarios);
             
             mnu.setVisible(true);
             //this.setVisible(false);
+            
             dispose();
             
         } else {

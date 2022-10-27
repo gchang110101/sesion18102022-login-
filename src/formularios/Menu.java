@@ -20,6 +20,11 @@ public class Menu extends javax.swing.JFrame {
     public Menu() {
         initComponents();
     }
+    
+    public Menu(dao.Usuario user) {
+        this.lista = user;
+        this.mostrarCantReg();
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -31,6 +36,8 @@ public class Menu extends javax.swing.JFrame {
     private void initComponents() {
 
         MiEscritorio = new javax.swing.JDesktopPane();
+        jToolBar1 = new javax.swing.JToolBar();
+        jLblRegistros = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         mnuCerrar = new javax.swing.JMenu();
         mnuCerrarS = new javax.swing.JMenuItem();
@@ -40,16 +47,35 @@ public class Menu extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Mi UAM");
+        addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                formMouseMoved(evt);
+            }
+        });
+        addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                formFocusGained(evt);
+            }
+        });
+
+        jToolBar1.setRollover(true);
+
+        jLblRegistros.setText("Cantidad de Registros en Usuario: 0");
+        jToolBar1.add(jLblRegistros);
+
+        MiEscritorio.setLayer(jToolBar1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout MiEscritorioLayout = new javax.swing.GroupLayout(MiEscritorio);
         MiEscritorio.setLayout(MiEscritorioLayout);
         MiEscritorioLayout.setHorizontalGroup(
             MiEscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 700, Short.MAX_VALUE)
+            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 707, Short.MAX_VALUE)
         );
         MiEscritorioLayout.setVerticalGroup(
             MiEscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 375, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MiEscritorioLayout.createSequentialGroup()
+                .addGap(0, 320, Short.MAX_VALUE)
+                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         mnuCerrar.setText("Archivo");
@@ -103,14 +129,12 @@ public class Menu extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(MiEscritorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(MiEscritorio)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(MiEscritorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(MiEscritorio)
         );
 
         pack();
@@ -135,8 +159,8 @@ public class Menu extends javax.swing.JFrame {
 
     private void mnuUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuUsuariosActionPerformed
         // TODO add your handling code here:
-        Usuario user = new Usuario();
-        user.setLista(lista);
+        Usuario user = new Usuario(lista);
+        //user.setLista(lista);
         this.MiEscritorio.add(user);
         user.setVisible(true);
         
@@ -145,6 +169,16 @@ public class Menu extends javax.swing.JFrame {
     private void jMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenu2ActionPerformed
+
+    private void formFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusGained
+        // TODO add your handling code here:
+        mostrarCantReg();
+    }//GEN-LAST:event_formFocusGained
+
+    private void formMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseMoved
+        // TODO add your handling code here:
+        mostrarCantReg();
+    }//GEN-LAST:event_formMouseMoved
 
     /**
      * @param args the command line arguments
@@ -183,8 +217,10 @@ public class Menu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane MiEscritorio;
+    private javax.swing.JLabel jLblRegistros;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JToolBar jToolBar1;
     private javax.swing.JMenu mnuCerrar;
     private javax.swing.JMenuItem mnuCerrarS;
     private javax.swing.JMenuItem mnuSalir;
@@ -197,6 +233,11 @@ public class Menu extends javax.swing.JFrame {
 
     public void setLista(dao.Usuario lista) {
         this.lista = lista;
+    }
+    
+    public void mostrarCantReg() {
+        this.jLblRegistros.setText("Cantidad de Registros en Usuario: " + 
+                lista.getLista().size());
     }
 }
 
