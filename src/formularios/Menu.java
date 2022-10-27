@@ -22,6 +22,7 @@ public class Menu extends javax.swing.JFrame {
     }
     
     public Menu(dao.Usuario user) {
+        initComponents();
         this.lista = user;
         this.mostrarCantReg();
     }

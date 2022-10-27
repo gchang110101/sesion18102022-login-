@@ -38,4 +38,16 @@ public class Usuario {
         
         return false;
     }
+    
+    public void editar(String user, String pw, String nombres, String apellidos,
+            String email) {
+        for(modelos.MUsuario usuario: this.lista) {
+            if(usuario.existe(user)) {
+                usuario.setPw(pw);
+                usuario.setNombres(nombres);
+                usuario.setApellidos(apellidos);
+                usuario.setEmail(email);
+            }
+        }
+    }
 }

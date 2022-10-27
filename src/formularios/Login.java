@@ -75,6 +75,11 @@ public class Login extends javax.swing.JFrame {
                 jBtnOkActionPerformed(evt);
             }
         });
+        jBtnOk.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jBtnOkKeyReleased(evt);
+            }
+        });
 
         jBtnCancelar.setText("Cancelar");
         jBtnCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -166,50 +171,8 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOkActionPerformed
-        // TODO add your handling code here:
-        String user = this.jTfUsuario.getText();
+        validar();
         
-        /* METODO NO FUNCIONA
-        String pw = this.jPfContra.getPassword().toString(); 
-        */
-        
-        /* METODO 1 SI SIRVE
-        String pw = new String(this.jPfContra.getPassword());  
-        */
-        
-        //METODO 2 tambien funciona
-        String pw = String.valueOf(this.jPfContra.getPassword());
-        
-        /*
-        if (intentos == 3) {
-            JOptionPane.showMessageDialog(this, "Muchos intentos. Adios");
-            System.exit(0);
-        }
-        */
-        
-        if(usuarios.autentcarUsuario(user, pw)) {
-            
-            JOptionPane.showMessageDialog(this, "Usuario Correcto",
-                    "Entrando", JOptionPane.INFORMATION_MESSAGE);
-            
-            Menu mnu = new Menu(usuarios);
-            
-            //mnu.setLista(usuarios);
-            
-            mnu.setVisible(true);
-            //this.setVisible(false);
-            
-            dispose();
-            
-        } else {
-            JOptionPane.showMessageDialog(this, "Incorrecto");
-            intentos++;
-        }
-        
-        if (intentos == 3) {
-            JOptionPane.showMessageDialog(this, "Muchos intentos. Adios");
-            System.exit(0);
-        }
     }//GEN-LAST:event_jBtnOkActionPerformed
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
@@ -219,102 +182,30 @@ public class Login extends javax.swing.JFrame {
 
     //para tratar de acceder apretando enter, 
     private void jPfContraKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPfContraKeyPressed
-        // TODO add your handling code here:
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            String user = this.jTfUsuario.getText();
-        
-            /* METODO NO FUNCIONA
-            String pw = this.jPfContra.getPassword().toString(); 
-            */
-
-            /* METODO 1 SI SIRVE
-            String pw = new String(this.jPfContra.getPassword());  
-            */
-
-            //METODO 2 tambien funciona
-            String pw = String.valueOf(this.jPfContra.getPassword());
-
-            /*
-            if (intentos == 3) {
-                JOptionPane.showMessageDialog(this, "Muchos intentos. Adios");
-                System.exit(0);
-            }
-            */
-
-            if(usuarios.autentcarUsuario(user, pw)) {
-
-                JOptionPane.showMessageDialog(this, "Usuario Correcto",
-                        "Entrando", JOptionPane.INFORMATION_MESSAGE);
-
-                Menu mnu = new Menu();
-                mnu.setLista(usuarios);
-
-                mnu.setVisible(true);
-                //this.setVisible(false);
-                dispose();
-
-            } else {
-                JOptionPane.showMessageDialog(this, "Incorrecto");
-                intentos++;
-            }
-            
-            if (intentos == 3) {
-                JOptionPane.showMessageDialog(this, "Muchos intentos. Adios");
-                System.exit(0);
-            }
+            validar();
         }
     }//GEN-LAST:event_jPfContraKeyPressed
 
     private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
         // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            validar();
+        }
     }//GEN-LAST:event_formKeyPressed
 
     private void jTfUsuarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTfUsuarioKeyPressed
-        // TODO add your handling code here:
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            String user = this.jTfUsuario.getText();
-        
-            /* METODO NO FUNCIONA
-            String pw = this.jPfContra.getPassword().toString(); 
-            */
-
-            /* METODO 1 SI SIRVE
-            String pw = new String(this.jPfContra.getPassword());  
-            */
-
-            //METODO 2 tambien funciona
-            String pw = String.valueOf(this.jPfContra.getPassword());
-
-            /*
-            if (intentos == 3) {
-                JOptionPane.showMessageDialog(this, "Muchos intentos. Adios");
-                System.exit(0);
-            }
-            */
-
-            if(usuarios.autentcarUsuario(user, pw)) {
-
-                JOptionPane.showMessageDialog(this, "Usuario Correcto",
-                        "Entrando", JOptionPane.INFORMATION_MESSAGE);
-
-                Menu mnu = new Menu();
-                mnu.setLista(usuarios);
-
-                mnu.setVisible(true);
-                //this.setVisible(false);
-                dispose();
-
-            } else {
-                JOptionPane.showMessageDialog(this, "Incorrecto");
-                intentos++;
-            }
-            
-            if (intentos == 3) {
-                JOptionPane.showMessageDialog(this, "Muchos intentos. Adios");
-                System.exit(0);
-            }
+            validar();
         }
     }//GEN-LAST:event_jTfUsuarioKeyPressed
+
+    private void jBtnOkKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jBtnOkKeyReleased
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            validar();
+        }
+    }//GEN-LAST:event_jBtnOkKeyReleased
 
     /**
      * @param args the command line arguments
@@ -349,6 +240,37 @@ public class Login extends javax.swing.JFrame {
                 new Login().setVisible(true);
             }
         });
+    }
+    
+    private void validar() {
+        // TODO add your handling code here:
+        String user = this.jTfUsuario.getText();
+
+        String pw = String.valueOf(this.jPfContra.getPassword());
+        
+        if(usuarios.autentcarUsuario(user, pw)) {
+            
+            JOptionPane.showMessageDialog(this, "Usuario Correcto",
+                    "Entrando", JOptionPane.INFORMATION_MESSAGE);
+            
+            Menu mnu = new Menu(usuarios);
+            
+            //mnu.setLista(usuarios);
+            
+            mnu.setVisible(true);
+            //this.setVisible(false);
+            
+            dispose();
+            
+        } else {
+            JOptionPane.showMessageDialog(this, "Incorrecto");
+            intentos++;
+        }
+        
+        if (intentos == 3) {
+            JOptionPane.showMessageDialog(this, "Muchos intentos. Adios");
+            System.exit(0);
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
