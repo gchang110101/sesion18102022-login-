@@ -8,6 +8,7 @@ import dao.Usuario;
 import formularios.Login;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+import modelos.MUsuario;
 
 /**
  *
@@ -29,7 +30,15 @@ public class MiUAMGDCP {
                "emptyempty@uamv.edu.ni");
        
         usuarios.agregar("1", "1", "testUser", "testLast", "testEmail");
-    
+        
+        usuarios.agregar("300", "69", "Juan Manuel", "Lopez Garcia", "jmlopez@uamv.edu.ni");
+        
+        ArrayList<MUsuario> newLista = new ArrayList<>();
+        newLista = usuarios.buscarXNombre("s");
+
+        for(Object u: newLista) {
+            System.out.println(u);
+        }
        
         Login login = new Login();
         login.usuarios = usuarios;

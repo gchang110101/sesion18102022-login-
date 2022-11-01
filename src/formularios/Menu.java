@@ -144,8 +144,13 @@ public class Menu extends javax.swing.JFrame {
     private void mnuCerrarSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuCerrarSActionPerformed
         // TODO add your handling code here:
         
-        MiUAMGDCP uam = new MiUAMGDCP();
-        uam.llenarUsuarios();
+        //MiUAMGDCP uam = new MiUAMGDCP();
+        //uam.llenarUsuarios();
+        
+        Login login = new Login();
+        login.usuarios = lista;
+        login.setVisible(true);
+        
         dispose();
     }//GEN-LAST:event_mnuCerrarSActionPerformed
 

@@ -54,6 +54,10 @@ public class Usuario extends javax.swing.JInternalFrame {
         jBtnGuardar = new javax.swing.JButton();
         jBtnEditar = new javax.swing.JButton();
         jBtnEliminar = new javax.swing.JButton();
+        jSeparator2 = new javax.swing.JToolBar.Separator();
+        jLblBuscar = new javax.swing.JLabel();
+        jTfValor = new javax.swing.JTextField();
+        jbtnBuscar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTblRegistros = new javax.swing.JTable();
 
@@ -125,7 +129,7 @@ public class Usuario extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLblEmail)
                     .addComponent(jTfEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(86, Short.MAX_VALUE))
+                .addContainerGap(91, Short.MAX_VALUE))
         );
 
         jToolBar1.setRollover(true);
@@ -178,7 +182,35 @@ public class Usuario extends javax.swing.JInternalFrame {
         jBtnEliminar.setFocusable(false);
         jBtnEliminar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jBtnEliminar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jBtnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnEliminarActionPerformed(evt);
+            }
+        });
         jToolBar1.add(jBtnEliminar);
+
+        jSeparator2.setSeparatorSize(new java.awt.Dimension(2, 35));
+        jToolBar1.add(jSeparator2);
+
+        jLblBuscar.setText("  Buscar por nombre:   ");
+        jToolBar1.add(jLblBuscar);
+
+        jTfValor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTfValorActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(jTfValor);
+
+        jbtnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/complemento/img/buscar.png"))); // NOI18N
+        jbtnBuscar.setToolTipText("Buscar");
+        jbtnBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbtnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnBuscarActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(jbtnBuscar);
 
         jTblRegistros.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -207,24 +239,22 @@ public class Usuario extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(39, 39, 39)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 698, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(128, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(105, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 94, Short.MAX_VALUE))
         );
 
         pack();
@@ -316,6 +346,23 @@ public class Usuario extends javax.swing.JInternalFrame {
         Limpiar();
     }//GEN-LAST:event_jBtnEditarActionPerformed
 
+    private void jBtnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnEliminarActionPerformed
+        // TODO add your handling code here:
+        this.lista.eliminarUsuario(this.jTfUser.getText());
+        Limpiar();
+        this.jBtnGuardar.setEnabled(true);
+        this.jBtnEditar.setEnabled(false);
+        this.jBtnEliminar.setEnabled(false);
+    }//GEN-LAST:event_jBtnEliminarActionPerformed
+
+    private void jTfValorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTfValorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTfValorActionPerformed
+
+    private void jbtnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnBuscarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnBuscarActionPerformed
+
     public void Limpiar() {
         this.jTfUser.setText("");
         this.jPfContra.setText("");
@@ -368,6 +415,7 @@ public class Usuario extends javax.swing.JInternalFrame {
     private javax.swing.JButton jBtnGuardar;
     private javax.swing.JButton jBtnNuevo;
     private javax.swing.JLabel jLblApe;
+    private javax.swing.JLabel jLblBuscar;
     private javax.swing.JLabel jLblContra;
     private javax.swing.JLabel jLblEmail;
     private javax.swing.JLabel jLblNombres;
@@ -375,12 +423,15 @@ public class Usuario extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField jPfContra;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JToolBar.Separator jSeparator2;
     private javax.swing.JTable jTblRegistros;
     private javax.swing.JTextField jTfApe;
     private javax.swing.JTextField jTfEmail;
     private javax.swing.JTextField jTfNombres;
     private javax.swing.JTextField jTfUser;
+    private javax.swing.JTextField jTfValor;
     private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JButton jbtnBuscar;
     // End of variables declaration//GEN-END:variables
 
     public dao.Usuario getLista() {
