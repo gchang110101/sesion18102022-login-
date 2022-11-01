@@ -33,12 +33,12 @@ public class MiUAMGDCP {
         
         usuarios.agregar("300", "69", "Juan Manuel", "Lopez Garcia", "jmlopez@uamv.edu.ni");
         
-        ArrayList<MUsuario> newLista = new ArrayList<>();
+        /* ArrayList<MUsuario> newLista = new ArrayList<>();
         newLista = usuarios.buscarXNombre("s");
 
         for(Object u: newLista) {
             System.out.println(u);
-        }
+        } */
        
         Login login = new Login();
         login.usuarios = usuarios;
