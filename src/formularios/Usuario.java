@@ -5,6 +5,7 @@
 package formularios;
 
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -13,8 +14,11 @@ import javax.swing.table.DefaultTableModel;
  * @author labc205
  */
 public class Usuario extends javax.swing.JInternalFrame {
-    private dao.Usuario lista = new dao.Usuario();
     int fila = -1;
+    private dao.Usuario lista = new dao.Usuario();
+    
+    //int fila = -1;
+    
     /**
      * Creates new form Usuario
      */
@@ -361,6 +365,11 @@ public class Usuario extends javax.swing.JInternalFrame {
 
     private void jbtnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnBuscarActionPerformed
         // TODO add your handling code here:
+        ArrayList<Object> newLista = new ArrayList<>();
+        
+        String valor = this.jTfValor.getText();
+        
+        newLista = lista.buscarXNombre(valor);
     }//GEN-LAST:event_jbtnBuscarActionPerformed
 
     public void Limpiar() {
@@ -443,7 +452,7 @@ public class Usuario extends javax.swing.JInternalFrame {
     }
     
     private DefaultTableModel generarTabla() {
-         DefaultTableModel dtm = new DefaultTableModel();
+        DefaultTableModel dtm = new DefaultTableModel();
          
         try {
             String titulos[] = {"ID", "NOMBRE COMPLETO", "EMAIL"};
@@ -479,12 +488,16 @@ public class Usuario extends javax.swing.JInternalFrame {
 
         String userName = lista.getLista().
                 get(fila).getUserName();
+        
         String pw = lista.getLista().
                 get(fila).getPw();
+        
         String nom = lista.getLista().
                 get(fila).getNombres();
+        
         String ape = lista.getLista().
                 get(fila).getApellidos();
+        
         String email = lista.getLista().
                 get(fila).getEmail();
 

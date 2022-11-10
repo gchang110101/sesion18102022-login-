@@ -4,6 +4,10 @@
  */
 package dao;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import modelos.MUsuario;
 
@@ -11,7 +15,11 @@ import modelos.MUsuario;
  *
  * @author labc205
  */
-public class Usuario {
+public class Usuario extends Conexion {
+    private ResultSet rs;
+    private PreparedStatement st = null;
+    private Connection conn = this.obtenerConexion();
+    
     private ArrayList<MUsuario> lista = new ArrayList<>();
 
     public ArrayList<MUsuario> getLista() {
@@ -23,6 +31,7 @@ public class Usuario {
     }
 
     public Usuario() {
+        this.obtenerRegistros();
     }
     
     public void agregar(String user, String pw, String nombres, String apellidos,
@@ -52,7 +61,7 @@ public class Usuario {
         return false;
     }
     
-    public ArrayList<MUsuario> buscarXNombre(String valor) {
+    public ArrayList buscarXNombre(String valor) {
         ArrayList<MUsuario> resultado = new ArrayList<>();
         
         for(MUsuario usuario: this.lista) {
@@ -76,5 +85,50 @@ public class Usuario {
                 usuario.setEmail(email);
             }
         }
+    }
+    
+    public void obtenerRegistros() {
+        String tSQL = "Select * from Usuario";
+        
+        try{
+            st = conn.prepareStatement(tSQL);
+            rs = st.executeQuery();
+            
+            //rs = st.executeQuery(tSQL);
+            
+            while(rs.next()) {
+                this.agregar(rs.getString("userName"), 
+                    rs.getString("pw"), 
+                    rs.getString("nombres"), 
+                    rs.getString("apellidos"), 
+                    rs.getString("email"));
+            }
+            
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+    
+    public boolean guardarRegistro(MUsuario u) {
+        boolean ok = false;
+        
+        try {
+            String tSQL = "Insert into Usuario (" 
+                    + "userName, Pw, Nombres, Apellidos, Email" 
+                    + "values(?, ?, ?, ?, ?)";
+            
+            st = conn.prepareStatement(tSQL);
+            st.setString(1, u.getUserName());
+            st.setString(2, u.getPw());
+            st.setString(3, u.getNombres());
+            st.setString(4, u.getApellidos());
+            st.setString(5, u.getEmail());
+            
+            
+        } catch (Exception ex) {
+            
+        }
+        
+        return ok;
     }
 }
